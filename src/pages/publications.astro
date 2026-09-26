@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PublicationRow from "../components/PublicationRow.astro";
+import { publicationPageOrderByYear, publications } from "../data/publications";
+
+const years = [...new Set(publications.map((publication) => publication.year))].sort((a, b) => b - a);
+
+const publicationsForYear = (year: number) => {
+  const customOrder = new Map(
+    (publicationPageOrderByYear[year] ?? []).map((slug, index) => [slug, index]),
+  );
+
+  return publications
+    .filter((publication) => publication.year === year)
+    .sort((a, b) =>
+      (customOrder.get(a.slug) ?? Number.MAX_SAFE_INTEGER)
+      - (customOrder.get(b.slug) ?? Number.MAX_SAFE_INTEGER)
+    );
+};
+---
+
+<BaseLayout
+  title="Publications — Saku Peltonen"
+  description="Publications by Saku Peltonen on graph learning, satisfiability, abstract reasoning, graph generation, and distributed algorithms."
+  currentPath="/publications"
+>
+  <header class="shell page-intro page-intro--compact">
+    <p class="eyebrow">Research</p>
+    <h1>Publications</h1>
+  </header>
+
+  <div class="shell publications-page">
+    {years.map((year) => (
+      <section class="publication-year" aria-labelledby={`year-${year}`}>
+        <h2 id={`year-${year}`}>{year}</h2>
+        <div class="publication-list">
+          {publicationsForYear(year)
+            .map((publication) => <PublicationRow publication={publication} />)}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

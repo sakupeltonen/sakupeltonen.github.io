@@ -1,0 +1,29 @@
+---
+import type { Publication } from "../data/publications";
+
+interface Props {
+  publication: Publication;
+  context: "card" | "row";
+  priority?: boolean;
+}
+
+const { publication, context, priority = false } = Astro.props;
+const layout = publication.imageLayout ?? "default";
+const loading = priority ? "eager" : "lazy";
+const image = context === "row" ? publication.rowImage : undefined;
+const imageSrc = image?.src ?? publication.image;
+const imageAlt = image?.alt ?? publication.imageAlt ?? "";
+const imageWidth = image?.width ?? publication.imageWidth;
+const imageHeight = image?.height ?? publication.imageHeight;
+---
+
+<div class:list={["publication-visual", `publication-visual--${layout}`, `publication-visual--${context}`]}>
+  <img
+    src={imageSrc}
+    alt={imageAlt}
+    width={imageWidth}
+    height={imageHeight}
+    loading={loading}
+    decoding="async"
+  />
+</div>

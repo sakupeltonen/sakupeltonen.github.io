@@ -1,0 +1,32 @@
+/* Generated from palette.json. Edit that file, then run `pnpm palette`. */
+:root {
+  --ink: #15181E;
+  --muted: #626A78;
+  --canvas: #FBFAF8;
+  --soft: #F3F1ED;
+  --visual-soft: #F7F6F3;
+  --paper: #FFFFFF;
+  --line: #DDD8D1;
+  --line-strong: #C7C0B7;
+  --accent: #3F5143;
+  --accent-dark: #2D3C31;
+  --accent-soft: #EBEEE9;
+  --brand: #550000;
+  --brand-dark: #3B0000;
+  --brand-soft: #F5ECEC;
+  --highlight: #CA725A;
+  --highlight-soft: #F8ECE8;
+  --portrait-backdrop: #E7E5E1;
+  --claret: #681C26;
+  --loden: #596149;
+  --terracotta: #B9634E;
+  --blue-slate: #5E6B78;
+  --sage-veil: #EBEEE9;
+  --warm-canvas: #FBFAF8;
+  --eucalyptus: #5F786B;
+  --muted-mustard: #D1AF52;
+  --rosewood: #965966;
+  --espresso: #51453C;
+  --mushroom: #A99D91;
+  --plot-orange: #E46F35;
+}

@@ -1,0 +1,176 @@
+---
+type NodeTone = "plain" | "soft" | "accent";
+type EdgeTone = "loden" | "slate";
+type EdgeWeight = "quiet" | "standard" | "strong";
+
+interface GraphNode {
+  x: number;
+  y: number;
+  r: number;
+  tone?: NodeTone;
+}
+
+type EdgeSpec = [number, number, EdgeTone?, EdgeWeight?];
+
+const nodes: GraphNode[] = [
+  { x: -40, y: 160, r: 2.1 },
+  { x: 130, y: 230, r: 2.5, tone: "soft" },
+  { x: 285, y: 125, r: 2.2 },
+  { x: 455, y: 310, r: 2.7 },
+  { x: 630, y: 210, r: 2.1, tone: "soft" },
+  { x: 810, y: 390, r: 2.6 },
+  { x: 990, y: 260, r: 2.2 },
+  { x: 1180, y: 435, r: 2.7, tone: "soft" },
+  { x: 1360, y: 315, r: 2.1 },
+  { x: 1640, y: 500, r: 2.5 },
+  { x: -30, y: 720, r: 2.2 },
+  { x: 170, y: 650, r: 2.6 },
+  { x: 360, y: 810, r: 2.1, tone: "soft" },
+  { x: 570, y: 690, r: 2.5 },
+  { x: 760, y: 865, r: 2.2 },
+  { x: 980, y: 730, r: 2.8, tone: "soft" },
+  { x: 1200, y: 875, r: 2.1 },
+  { x: 1430, y: 720, r: 2.6 },
+  { x: 1640, y: 800, r: 2.2 },
+  { x: 180, y: 35, r: 1.9 },
+  { x: 390, y: 60, r: 2.4 },
+  { x: 570, y: 470, r: 2.1 },
+  { x: 700, y: 560, r: 2.6 },
+  { x: 500, y: 520, r: 2.2, tone: "accent" },
+  { x: 880, y: 55, r: 2 },
+  { x: 1110, y: 80, r: 2.5, tone: "soft" },
+  { x: 1040, y: 140, r: 1.9 },
+  { x: 1080, y: 620, r: 2.3 },
+  { x: 1280, y: 580, r: 2.1 },
+  { x: 1230, y: 700, r: 2.6 },
+  { x: 1510, y: 160, r: 2 },
+  { x: 1500, y: 365, r: 2.5 },
+  { x: 1510, y: 610, r: 2.2, tone: "accent" },
+  { x: 1510, y: 920, r: 2.4 },
+  { x: 55, y: 500, r: 2.1 },
+  { x: 250, y: 520, r: 2.5 },
+  { x: 260, y: 930, r: 2 },
+  { x: 470, y: 930, r: 2.4 },
+  { x: 680, y: 610, r: 2.2 },
+  { x: 850, y: 600, r: 2.6 },
+  { x: 860, y: 960, r: 2.1 },
+  { x: 1050, y: 940, r: 2.5 },
+  { x: 1320, y: 650, r: 2.2 },
+  { x: 1340, y: 980, r: 2.6 },
+  { x: 910, y: 520, r: 2.3, tone: "soft" },
+  { x: 70, y: 350, r: 2.4 },
+  { x: 335, y: 395, r: 1.9 },
+  { x: 745, y: 105, r: 2.2, tone: "soft" },
+  { x: 905, y: 355, r: 2 },
+  { x: 1165, y: 225, r: 2.4 },
+  { x: 1395, y: 505, r: 2, tone: "soft" },
+  { x: 115, y: 825, r: 2.3 },
+  { x: 455, y: 770, r: 1.9 },
+  { x: 1095, y: 795, r: 2.2 },
+  { x: 1475, y: 845, r: 2.1 },
+  { x: 25, y: 55, r: 2 },
+  { x: 245, y: 385, r: 2.2, tone: "soft" },
+  { x: 600, y: 80, r: 2.3 },
+  { x: 1265, y: 155, r: 2 },
+  { x: 1580, y: 60, r: 2.4 },
+  { x: 395, y: 650, r: 2.4 },
+  { x: 70, y: 900, r: 2.1, tone: "soft" },
+  { x: 630, y: 975, r: 2.3 },
+  { x: 1575, y: 965, r: 2 },
+  { x: 820, y: 700, r: 2.2 },
+  { x: 1300, y: 800, r: 2.1 },
+];
+
+const edgeSpecs: EdgeSpec[] = [
+  [0, 1, "loden", "strong"], [1, 2], [2, 3], [3, 4], [4, 5],
+  [5, 6], [6, 7], [7, 8], [8, 9, "loden", "strong"],
+  [10, 11, "slate", "strong"], [11, 12, "slate"], [12, 13, "slate"],
+  [13, 14, "slate"], [14, 15, "slate"], [15, 16, "slate"],
+  [16, 17, "slate"], [17, 18, "slate", "strong"],
+  [19, 2, "slate", "strong"], [2, 20, "slate"], [20, 19, "slate"],
+  [3, 23], [23, 21], [21, 4], [21, 22], [22, 5],
+  [24, 6, "slate", "strong"], [6, 26, "slate"], [26, 25, "slate"],
+  [25, 24, "slate"],
+  [7, 27], [27, 29], [29, 28], [28, 7], [28, 8, "slate", "quiet"],
+  [8, 30, "slate"], [30, 31, "slate"], [31, 8, "slate"],
+  [31, 9, "slate", "strong"], [31, 32, "slate"],
+  [0, 45, "slate", "strong"], [45, 34, "slate"], [34, 10, "slate", "strong"],
+  [45, 1, "slate"], [34, 35, "slate"], [35, 11, "slate"],
+  [12, 36], [36, 37], [37, 13], [36, 13, "slate", "quiet"], [37, 14],
+  [13, 38], [38, 22], [38, 14], [22, 39], [39, 44],
+  [44, 5], [44, 6, "slate", "quiet"], [39, 15],
+  [14, 40, "slate"], [40, 41, "slate"], [41, 15, "slate"],
+  [15, 27], [29, 16], [16, 42], [42, 17], [42, 32], [32, 17],
+  [17, 33, "slate"], [33, 43, "slate"], [43, 16, "slate"],
+  [33, 18, "slate", "strong"],
+  [3, 46], [46, 23], [46, 35, "slate", "quiet"],
+  [4, 47, "slate"], [47, 24, "slate", "quiet"],
+  [5, 48], [48, 6], [48, 44, "slate", "quiet"],
+  [6, 49, "slate"], [49, 25, "slate", "quiet"],
+  [7, 50], [50, 32], [50, 42, "slate"],
+  [10, 51, "slate"], [51, 11, "slate"], [51, 36, "slate", "quiet"],
+  [12, 52], [52, 13], [52, 37, "slate", "quiet"],
+  [15, 53], [53, 16], [53, 29, "slate", "quiet"],
+  [17, 54, "slate"], [54, 33, "slate"], [54, 43, "slate", "quiet"],
+  [55, 19, "slate"], [55, 0, "slate", "quiet"],
+  [56, 45], [56, 46, "slate"],
+  [57, 20, "slate"], [57, 47, "slate", "quiet"],
+  [58, 25, "slate"], [58, 49],
+  [59, 30, "slate"], [59, 31, "slate", "quiet"],
+  [60, 35], [60, 13, "slate"],
+  [61, 10, "slate"], [61, 51, "slate", "quiet"],
+  [62, 37], [62, 40, "slate"],
+  [63, 33, "slate"], [63, 18, "slate", "quiet"],
+  [64, 39], [64, 14, "slate"],
+  [65, 42], [65, 16, "slate"],
+];
+
+const edges = edgeSpecs.map(([from, to, tone = "loden", weight = "standard"]) => ({
+  x1: nodes[from].x,
+  y1: nodes[from].y,
+  x2: nodes[to].x,
+  y2: nodes[to].y,
+  tone,
+  weight,
+}));
+---
+
+<svg
+  class="graph-backdrop"
+  viewBox="0 0 1600 1000"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g class="graph-backdrop__edges">
+    {edges.map((edge) => (
+      <line
+        x1={edge.x1}
+        y1={edge.y1}
+        x2={edge.x2}
+        y2={edge.y2}
+        class:list={[
+          "graph-backdrop__edge",
+          edge.tone === "slate" && "graph-backdrop__edge--slate",
+          edge.weight === "quiet" && "graph-backdrop__edge--quiet",
+          edge.weight === "strong" && "graph-backdrop__edge--strong",
+        ]}
+      />
+    ))}
+  </g>
+
+  <g class="graph-backdrop__nodes">
+    {nodes.map((node) => (
+      <circle
+        cx={node.x}
+        cy={node.y}
+        r={node.r}
+        class:list={[
+          "graph-backdrop__node",
+          node.tone === "soft" && "graph-backdrop__node--soft",
+          node.tone === "accent" && "graph-backdrop__node--accent",
+        ]}
+      />
+    ))}
+  </g>
+</svg>

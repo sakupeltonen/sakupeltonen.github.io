@@ -1,0 +1,16 @@
+{
+  "name": "sakupeltonen.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "palette": "node scripts/generate-palette.mjs",
+    "dev": "node scripts/generate-palette.mjs && astro dev",
+    "build": "node scripts/generate-palette.mjs && astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "7.3.5"
+  }
+}

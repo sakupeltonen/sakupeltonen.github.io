@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { publications } from "../data/publications";
+---
+
+<BaseLayout
+  title="CV — Saku Peltonen"
+  description="Research background, experience, education, and publications by Saku Peltonen."
+  currentPath="/cv"
+>
+  <header class="shell page-intro cv-intro">
+    <div>
+      <p class="eyebrow">Curriculum vitae</p>
+      <h1>Saku Pe<span class="name-l">l</span>tonen</h1>
+    </div>
+    <p>
+      PhD student at ETH Zürich working on graph learning for algorithmic and
+      combinatorial reasoning.
+    </p>
+  </header>
+
+  <div class="shell cv-page">
+    <aside class="cv-sidebar" aria-label="Contact and research interests">
+      <section>
+        <h2>Contact</h2>
+        <address>
+          <a href="mailto:speltonen@ethz.ch">speltonen@ethz.ch</a><br />
+          Distributed Computing Group<br />
+          ETH Zürich
+        </address>
+      </section>
+
+      <section>
+        <h2>Research</h2>
+        <ul class="tag-list">
+          <li>Graph learning</li>
+          <li>Combinatorial reasoning</li>
+          <li>Boolean satisfiability</li>
+          <li>Abstract reasoning</li>
+          <li>Graph generation</li>
+          <li>Distributed algorithms</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Profiles</h2>
+        <ul class="plain-link-list">
+          <li><a href="https://github.com/sakupeltonen" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+          <li><a href="https://ch.linkedin.com/in/sakupeltonen" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
+          <li><a href="https://disco.ethz.ch/members/speltonen" target="_blank" rel="noreferrer">ETH profile ↗</a></li>
+        </ul>
+      </section>
+    </aside>
+
+    <div class="cv-main">
+      <section class="cv-section" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Experience</h2>
+        <div class="cv-entry">
+          <div class="cv-entry-date">May 2024–present</div>
+          <div>
+            <h3>PhD student</h3>
+            <p class="cv-entry-place">Distributed Computing Group, ETH Zürich</p>
+            <p>Supervised by Prof. Roger Wattenhofer.</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-date">Nov 2023–Apr 2024</div>
+          <div>
+            <h3>Quantitative analyst</h3>
+            <p class="cv-entry-place">Risk Modelling Team, Fortum</p>
+            <p>Worked as a developer in the risk-modelling team.</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-date">Mar 2022–Jul 2023</div>
+          <div>
+            <h3>Research assistant</h3>
+            <p class="cv-entry-place">Theoretical Computer Science Group, Aalto University</p>
+            <p>Research on distributed graph algorithms.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cv-section" aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <div class="cv-entry">
+          <div class="cv-entry-date">2021–2023</div>
+          <div>
+            <h3>MSc in Computer Science</h3>
+            <p class="cv-entry-place">Aalto University · GPA 4.95/5</p>
+            <p>
+              Master’s thesis: <em>Distributed Symmetry Breaking on Power Graphs via Sparsification</em>
+            </p>
+            <p>Study track: Algorithms, Logic and Computation · Minor: Mathematics</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-entry-date">2018–2021</div>
+          <div>
+            <h3>BSc in Mathematics</h3>
+            <p class="cv-entry-place">Aalto University · GPA 5.00/5</p>
+            <p>Minor: Computer Science</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cv-section" aria-labelledby="publications-heading">
+        <div class="cv-section-heading">
+          <h2 id="publications-heading">Publications</h2>
+          <a href="/publications">Full details →</a>
+        </div>
+        <ol class="cv-publication-list" role="list">
+          {publications.map((publication) => (
+            <li>
+              <span>{publication.title}</span>
+              <small>{publication.venueShort} {publication.year}{publication.note ? ` · ${publication.note}` : ""}</small>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>
