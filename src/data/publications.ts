@@ -66,6 +66,7 @@ export const publications: Publication[] = [
     imageLayout: "lgsm",
     links: [
       { label: "Paper", href: "https://arxiv.org/abs/2605.12358" },
+      { label: "BibTeX", href: "https://disco.ethz.ch/publications/5296/bibtex" },
     ],
   },
   {
@@ -92,7 +93,7 @@ export const publications: Publication[] = [
     },
     imageLayout: "random-probing",
     links: [
-      { label: "MLG workshop version", href: "https://mlg-europe.github.io/2026/submissions/350/Submission/MLG26-submission.pdf" },
+      { label: "Paper", href: "https://arxiv.org/abs/2610.18164" },
       { label: "Poster", href: "/posters/random-probing.pdf" },
       { label: "BibTeX", href: "https://disco.ethz.ch/publications/5284/bibtex" },
     ],
@@ -117,7 +118,6 @@ export const publications: Publication[] = [
       { label: "Paper", href: "https://arxiv.org/abs/2605.31031" },
       { label: "Poster", href: "/posters/grapharc.pdf" },
       { label: "Code", href: "https://github.com/sakupeltonen/graph-arc" },
-      { label: "DOI", href: "https://doi.org/10.1145/3770855.3817591" },
       { label: "BibTeX", href: "https://disco.ethz.ch/publications/5237/bibtex" },
     ],
   },
@@ -155,7 +155,7 @@ export const publications: Publication[] = [
     imageHeight: 604,
     imageLayout: "generating-trees",
     links: [
-      { label: "Paper", href: "https://openreview.net/pdf?id=IvyUooRkCR" },
+      { label: "Paper", href: "https://arxiv.org/abs/2609.38506" },
       { label: "Poster", href: "/posters/autoregressive-frontier-expansion.pdf" },
     ],
   },
@@ -179,7 +179,6 @@ export const publications: Publication[] = [
       { label: "Paper", href: "https://arxiv.org/abs/2602.08745" },
       { label: "Poster", href: "/posters/gnn-sat-expressivity.pdf" },
       { label: "Code", href: "https://github.com/sakupeltonen/sat-expressivity" },
-      { label: "OpenReview", href: "https://openreview.net/forum?id=Q01JX3CuDx" },
       { label: "BibTeX", href: "https://disco.ethz.ch/publications/5226/bibtex" },
     ],
   },
@@ -199,6 +198,7 @@ export const publications: Publication[] = [
     imageLayout: "power-graph",
     links: [
       { label: "Paper", href: "https://arxiv.org/abs/2302.06878" },
+      { label: "BibTeX", href: "/bibtex/distributed-symmetry-breaking.bib" },
     ],
   },
 ];
